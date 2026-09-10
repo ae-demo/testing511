@@ -1,9 +1,15 @@
 {
   "name": "currency-service",
-  "description": "Converts an expense amount entered in a foreign currency into the household's home currency using an exchange rate, so all totals, category breakdowns, and limits stay comparable. No provider has been chosen yet.",
-  "suggestions": [
-    { "name": "Open Exchange Rates", "style": "rest-api", "description": "Simple REST API for current and historical exchange rates." },
-    { "name": "exchangerate.host", "style": "rest-api", "description": "Free, no-signup exchange rate API." },
-    { "name": "Fixer", "style": "rest-api", "description": "Popular commercial exchange-rate API with strong currency coverage." }
+  "description": "Converts an expense amount entered in a foreign currency into the household's home currency, using an exchange rate looked up from Open Exchange Rates (latest or historical rates relative to a base currency), so all totals, category breakdowns, and limits stay comparable.",
+  "provider": "Open Exchange Rates",
+  "style": "rest-api",
+  "contract": "openapi.yaml",
+  "provenance": {
+    "sourceUrl": "https://docs.openexchangerates.org/reference/api-introduction",
+    "fetchedAt": "2026-09-10T00:00:00Z",
+    "sliced": false
+  },
+  "config": [
+    { "key": "OPEN_EXCHANGE_RATES_APP_ID", "secret": true, "description": "Your Open Exchange Rates App ID, from your account's App IDs page at openexchangerates.org." }
   ]
 }

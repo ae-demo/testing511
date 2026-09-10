@@ -1,0 +1,92 @@
+openapi: 3.0.3
+x-aep-derived: true
+info:
+  title: Open Exchange Rates API (derived slice)
+  version: "0.7"
+  description: >
+    Derived from Open Exchange Rates' own API reference — covers only the
+    operations this design calls: fetching the latest exchange rates and
+    fetching historical rates for a given date, both relative to a base
+    currency, used to convert a foreign-currency expense to the household's
+    home currency.
+servers:
+  - url: https://openexchangerates.org/api
+paths:
+  /latest.json:
+    get:
+      operationId: getLatestRates
+      summary: Get the latest exchange rates relative to a base currency
+      x-aep-source: https://docs.openexchangerates.org/reference/latest-json
+      parameters:
+        - name: app_id
+          in: query
+          required: true
+          schema: { type: string }
+          description: Open Exchange Rates App ID
+        - name: base
+          in: query
+          required: false
+          schema: { type: string, default: USD }
+          description: 3-letter ISO base currency code
+      responses:
+        '200':
+          description: latest rates
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RatesResponse' }
+        '401':
+          description: invalid or missing App ID
+          content:
+            application/json: { schema: { $ref: '#/components/schemas/Error' } }
+  /historical/{date}.json:
+    get:
+      operationId: getHistoricalRates
+      summary: Get exchange rates for a specific historical date, relative to a base currency
+      x-aep-source: https://docs.openexchangerates.org/reference/historical-json
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema: { type: string, format: date }
+          description: date in YYYY-MM-DD, UTC
+        - name: app_id
+          in: query
+          required: true
+          schema: { type: string }
+          description: Open Exchange Rates App ID
+        - name: base
+          in: query
+          required: false
+          schema: { type: string, default: USD }
+          description: 3-letter ISO base currency code
+      responses:
+        '200':
+          description: historical rates for the given date
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RatesResponse' }
+        '401':
+          description: invalid or missing App ID
+          content:
+            application/json: { schema: { $ref: '#/components/schemas/Error' } }
+components:
+  schemas:
+    RatesResponse:
+      type: object
+      required: [timestamp, base, rates]
+      properties:
+        disclaimer: { type: string }
+        license: { type: string }
+        timestamp: { type: integer, description: UNIX timestamp (UTC seconds) }
+        base: { type: string, description: 3-letter base currency code }
+        rates:
+          type: object
+          additionalProperties: { type: number }
+          description: map of 3-letter currency code to rate relative to base
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: integer }
+        message: { type: string }
+        description: { type: string }
