@@ -7,11 +7,53 @@
   "appPath": "expense-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "expense-api" },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
   ],
   "description": "The single-page app the household uses to log expenses, browse daily/weekly/monthly and per-category spending, manage categories, and set category limits. Signs users in via Thunder SSO and calls expense-api for all data; holds no data of its own and performs no currency conversion itself.",
-  "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "expense-api",
+      "wiring": {
+        "endpoint": {
+          "component": "testing511-expense-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "EXPENSE_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "testing511-user-auth",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
