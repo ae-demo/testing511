@@ -49,6 +49,10 @@ so that we have a budget target to track against.
 9. As a household member, I want to see how much of each category's limit
 has been used for the current period, including when a category is over
 its limit, so that we can adjust our spending before it gets out of hand.
+10. As a household member, I want to enter an expense in whatever currency I
+paid in, and have the app convert it to our household's home currency, so
+that every total, category breakdown, and limit stays comparable across
+currencies.
 
 ## Product Decisions
 
@@ -62,15 +66,20 @@ capabilities; there is no owner/admin role.
 - Category limits reset every calendar month (limit usage is tracked against
 the current calendar month).
 - Weekly totals use the calendar week (Monday–Sunday).
-- The application tracks a single household currency; multi-currency
-support is not needed. *assumed*
+- The household sets one home currency; every total, category breakdown, and
+limit is expressed in it. *assumed*
+- Multi-currency is supported at expense-entry time: an expense may be logged
+in a currency other than the home currency and is converted to the home
+currency for reporting. Converting a foreign-currency expense requires a
+currency-conversion (exchange-rate) capability — no specific provider is
+named yet; one will be chosen when this dependency is defined at design
+time.
 - Limit status is shown in-app (e.g. a progress indicator per category); no
 external notification (email/SMS) is sent when a category nears or exceeds
 its limit.
 
 ## Out of Scope
 
-- Multi-currency support.
 - Receipt/photo attachments for expenses.
 - Bank account linking or automatic transaction import.
 - Multi-household support (this application serves a single household).
