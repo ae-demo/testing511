@@ -28,27 +28,27 @@ is no owner/admin distinction; all expense data is shared, not personal.
 ## User Stories
 
 1. As a household member, I want to sign in to the application, so that only
- my household can access our shared expense data.
+my household can access our shared expense data.
 2. As a household member, I want to quickly add an expense with an amount,
- category, date, and optional note, so that logging spending takes seconds.
+category, date, and optional note, so that logging spending takes seconds.
 3. As a household member, I want to edit or delete any expense in the shared
- ledger, so that either of us can correct a mistake regardless of who
- entered it.
+ledger, so that either of us can correct a mistake regardless of who
+entered it.
 4. As a household member, I want to assign every expense to a category, so
- that our spending is organized into meaningful groups.
+that our spending is organized into meaningful groups.
 5. As a household member, I want to create, rename, and remove expense
- categories, so that the categories match how we actually spend.
+categories, so that the categories match how we actually spend.
 6. As a household member, I want to view total expenditure for today, the
- current week, and the current month, so that I can see our spending at a
- glance over different timeframes.
+current week, and the current month, so that I can see our spending at a
+glance over different timeframes.
 7. As a household member, I want to see a breakdown of spending by category
- for a selected period, so that I know which categories consume the most
- of our budget.
+for a selected period, so that I know which categories consume the most
+of our budget.
 8. As a household member, I want to set a spending limit for each category,
- so that we have a budget target to track against.
+so that we have a budget target to track against.
 9. As a household member, I want to see how much of each category's limit
- has been used for the current period, including when a category is over
- its limit, so that we can adjust our spending before it gets out of hand.
+has been used for the current period, including when a category is over
+its limit, so that we can adjust our spending before it gets out of hand.
 
 ## Product Decisions
 
@@ -60,13 +60,13 @@ data.
 - Permissions: both household members are equal peers with identical
 capabilities; there is no owner/admin role.
 - Category limits reset every calendar month (limit usage is tracked against
-the current calendar month). *assumed*
-- Weekly totals use the calendar week (Monday–Sunday). *assumed*
+the current calendar month).
+- Weekly totals use the calendar week (Monday–Sunday).
 - The application tracks a single household currency; multi-currency
 support is not needed. *assumed*
 - Limit status is shown in-app (e.g. a progress indicator per category); no
 external notification (email/SMS) is sent when a category nears or exceeds
-its limit. *assumed*
+its limit.
 
 ## Out of Scope
 
