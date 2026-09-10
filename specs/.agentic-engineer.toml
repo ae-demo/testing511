@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "testing511"
+createdAt = "2026-09-10T07:38:14Z"
+idea = "I've been thinking of building a personal application to manage my expenses. I need a UI to easily add my daily expenses and a way to visualize my daily, weekly, and monthly expenditures. My wife also needs to log in to this application, not just me. I usually categorize my expenses into various groups, so I should be able to see group totals, etc.  And then I need to set limits for each category."
