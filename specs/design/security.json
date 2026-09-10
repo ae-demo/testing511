@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "coldStartRole": "Household Member",
+  "publicComponents": [],
+  "roles": [
+    {
+      "name": "Household Member",
+      "description": "Either person in the household. Signs in, logs and edits shared expenses, manages categories, and sets category limits.",
+      "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "grantedBy": "first sign-in",
+      "permissions": [
+        { "component": "expense-api", "actions": ["read expenses", "create expense", "edit expense", "delete expense", "manage categories", "set category limit", "read period totals"] },
+        { "component": "expense-webapp", "screens": ["Dashboard", "Add Expense", "Categories", "Category Detail"] }
+      ]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-household-member", "role": "Household Member" }
+  ],
+  "thunder": {
+    "name": "Household Expense Tracker",
+    "type": "browser",
+    "scopes": "openid profile email group ou"
+  }
+}

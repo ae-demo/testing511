@@ -1,0 +1,9 @@
+{
+  "name": "currency-service",
+  "description": "Converts an expense amount entered in a foreign currency into the household's home currency using an exchange rate, so all totals, category breakdowns, and limits stay comparable. No provider has been chosen yet.",
+  "suggestions": [
+    { "name": "Open Exchange Rates", "style": "rest-api", "description": "Simple REST API for current and historical exchange rates." },
+    { "name": "exchangerate.host", "style": "rest-api", "description": "Free, no-signup exchange rate API." },
+    { "name": "Fixer", "style": "rest-api", "description": "Popular commercial exchange-rate API with strong currency coverage." }
+  ]
+}
