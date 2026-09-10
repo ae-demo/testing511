@@ -1,0 +1,16 @@
+# crash artefacts — never wanted, in any component
+core
+core.*
+hs_err_pid*.log
+replay_pid*.log
+
+# platform session/credential files — never committed
+/.aep/
+/.logs/
+
+# expense-api (Ballerina)
+/expense-api/target/
+
+# expense-webapp (React/Vite)
+/expense-webapp/node_modules/
+/expense-webapp/dist/
